@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import RealtimeChart from "../charts/RealtimeChart";
+import LineChart from "../charts/LineChart";
 import { tailwindConfig, hexToRGB } from "../../utils/Utils";
 
 function DashboardCard() {
@@ -8,7 +8,7 @@ function DashboardCard() {
   const [increment, setIncrement] = useState(0);
   const [range, setRange] = useState(4);
 
-  const data = JSON.parse(localStorage.getItem("activeSubscriptions"));
+  const data = JSON.parse(localStorage.getItem("packetSent"));
 
   const [slicedData, setSlicedData] = useState(data.slice(0, range));
 
@@ -50,7 +50,7 @@ function DashboardCard() {
     labels: slicedLabels,
     datasets: [
       {
-        data: slicedData,
+        data: JSON.parse(localStorage.getItem("packetReceived")),
         fill: true,
         backgroundColor: `rgba(${hexToRGB(
           tailwindConfig().theme.colors.blue[500]
@@ -63,15 +63,25 @@ function DashboardCard() {
         pointBackgroundColor: tailwindConfig().theme.colors.indigo[500],
         clip: 20,
       },
+      {
+        data: slicedData,
+        borderColor: tailwindConfig().theme.colors.gray[300],
+        borderWidth: 2,
+        tension: 0,
+        pointRadius: 0,
+        pointHoverRadius: 3,
+        pointBackgroundColor: tailwindConfig().theme.colors.gray[300],
+        clip: 20,
+      },
     ],
   };
 
   return (
     <div className="flex flex-col bg-white border rounded-sm shadow-lg col-span-full sm:col-span-6 border-slate-200">
       <header className="flex items-center px-5 py-4 border-b border-slate-100">
-        <h2 className="font-semibold text-slate-800">Active Subscriptions</h2>
+        <h2 className="font-semibold text-slate-800">Packet Received/Sent</h2>
       </header>
-      <RealtimeChart data={chartData} width={595} height={248} />
+      <LineChart data={chartData} width={595} height={248} />
     </div>
   );
 }

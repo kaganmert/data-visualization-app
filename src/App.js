@@ -4,6 +4,7 @@ import useFetch from "./hooks/useFetch.js";
 import StoragePersister from "./utils/StoragePersister.js";
 
 import DashboardCard from "./components/cards/DashboardCard";
+import MultipleResultCard from "./components/cards/MultipleResultCard.jsx";
 import { DataNotFound } from "./components/warnings/DataNotFound.js";
 import "./components/charts/config/ChartjsConfig";
 
@@ -22,6 +23,7 @@ function App() {
             <div className="w-full px-4 py-8 mx-auto sm:px-6 lg:px-8 max-w-9xl">
               <div className="grid grid-cols-12 gap-6">
                 <DashboardCard />
+                <MultipleResultCard />
               </div>
             </div>
           </main>

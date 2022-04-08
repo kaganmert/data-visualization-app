@@ -5,7 +5,8 @@ function StoragePersister(data) {
   let clientsArr = [];
   let connectedArr = [];
   let disconnectedArr = [];
-  console.log(data.disconnected);
+  let packetReceivedArr = [];
+  let packetSentArr = [];
 
   if (!localStorage.getItem("dates")) {
     datesArr.push(moment().format("hh:mm:ss"));
@@ -13,6 +14,15 @@ function StoragePersister(data) {
 
     connectedArr.push(data.connected);
     localStorage.setItem("connected", JSON.stringify(connectedArr));
+
+    disconnectedArr.push(data.disconnected);
+    localStorage.setItem("disconnected", JSON.stringify(disconnectedArr));
+
+    packetReceivedArr.push(data.packetReceived);
+    localStorage.setItem("packetReceived", JSON.stringify(packetReceivedArr));
+
+    packetSentArr.push(data.packetSent);
+    localStorage.setItem("packetSent", JSON.stringify(packetSentArr));
 
     clientsArr.push(data.activeSubscriptions);
     localStorage.setItem("activeSubscriptions", JSON.stringify(clientsArr));
@@ -24,6 +34,18 @@ function StoragePersister(data) {
     connectedArr = JSON.parse(localStorage.getItem("connected"));
     connectedArr.push(data.connected);
     localStorage.setItem("connected", JSON.stringify(connectedArr));
+
+    disconnectedArr = JSON.parse(localStorage.getItem("disconnected"));
+    disconnectedArr.push(data.disconnected);
+    localStorage.setItem("disconnected", JSON.stringify(disconnectedArr));
+
+    packetReceivedArr = JSON.parse(localStorage.getItem("packetReceived"));
+    packetReceivedArr.push(data.packetReceived);
+    localStorage.setItem("packetReceived", JSON.stringify(packetReceivedArr));
+
+    packetSentArr = JSON.parse(localStorage.getItem("packetSent"));
+    packetSentArr.push(data.packetSent);
+    localStorage.setItem("packetSent", JSON.stringify(packetSentArr));
 
     clientsArr = JSON.parse(localStorage.getItem("activeSubscriptions"));
     clientsArr.push(data.activeSubscriptions);
