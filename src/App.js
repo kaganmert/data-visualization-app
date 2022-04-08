@@ -21,6 +21,12 @@ function App() {
         <div className="relative flex flex-col flex-1 overflow-x-hidden overflow-y-auto">
           <main>
             <div className="w-full px-4 py-8 mx-auto sm:px-6 lg:px-8 max-w-9xl">
+              <h1
+                className="text-2xl md:text-3xl font-extrabold leading-tighter tracking-tighter mb-4"
+                data-aos="zoom-y-out"
+              >
+                If the data is not visible, please refresh the page.
+              </h1>{" "}
               <div className="grid grid-cols-12 gap-6">
                 <DashboardCard />
                 <MultipleResultCard />
