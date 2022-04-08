@@ -4,7 +4,7 @@ Single page web app which visualizes live MQTT broker metrics.
 
 Demo live at: [digiterra.kagan.dev](http://94.250.203.170:9002/)
 
-![](https://i.hizliresim.com/9se8cm0.png)
+![](https://i.hizliresim.com/4m9gehj.png)
 
 ## Features
 
