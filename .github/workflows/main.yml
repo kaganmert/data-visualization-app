@@ -11,9 +11,9 @@ jobs:
       - name: Secret injection
         run: |
           cat <<EOF > .env
-      REACT_APP_CLIENT_ID=${{ secrets.REACT_APP_CLIENT_ID }}
-      REACT_APP_RECONNECT_PERIOD=${{ secrets.REACT_APP_RECONNECT_PERIOD }}
-      REACT_APP_CONNECTION=${{ secrets.REACT_APP_CONNECTION }}
+          REACT_APP_CLIENT_ID=${{ secrets.REACT_APP_CLIENT_ID }}
+          REACT_APP_RECONNECT_PERIOD=${{ secrets.REACT_APP_RECONNECT_PERIOD }}
+          REACT_APP_CONNECTION=${{ secrets.REACT_APP_CONNECTION }}
           EOF
 
       - name: Deploy Application
