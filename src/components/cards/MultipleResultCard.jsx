@@ -1,12 +1,12 @@
 import LineChart from "../charts/LineChart";
 import { tailwindConfig, hexToRGB } from "../../utils/Utils";
 
-function DashboardCard({ date, packetReceived, packetSent }) {
+function DashboardCard({ title, date, received, sent }) {
   const chartData = {
     labels: date,
     datasets: [
       {
-        data: packetReceived,
+        data: received,
         fill: true,
         backgroundColor: `rgba(${hexToRGB(
           tailwindConfig().theme.colors.blue[500]
@@ -20,7 +20,7 @@ function DashboardCard({ date, packetReceived, packetSent }) {
         clip: 20,
       },
       {
-        data: packetSent,
+        data: sent,
         borderColor: tailwindConfig().theme.colors.gray[300],
         borderWidth: 2,
         tension: 0,
@@ -33,9 +33,9 @@ function DashboardCard({ date, packetReceived, packetSent }) {
   };
 
   return (
-    <div className="flex flex-col bg-white border rounded-sm shadow-lg col-span-full sm:col-span-6 border-slate-200">
+    <div className="flex flex-col bg-white border rounded-sm shadow-lg col-span-full sm:col-span-4 border-slate-200">
       <header className="flex items-center px-5 py-4 border-b border-slate-100">
-        <h2 className="font-semibold text-slate-800">Packet Received/Sent</h2>
+        <h2 className="font-semibold text-slate-800">{title}-Received/Sent</h2>
       </header>
       <LineChart data={chartData} width={595} height={248} />
     </div>

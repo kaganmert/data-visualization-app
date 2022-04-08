@@ -5,10 +5,10 @@ import moment from "moment";
 function useFetch(
   setDate,
   setActiveSubscriptions,
-  setConnected,
-  setDisconnected,
   setPacketReceived,
-  setPacketSent
+  setPacketSent,
+  setBytesReceived,
+  setBytesSent
 ) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(null);
@@ -30,10 +30,10 @@ function useFetch(
         ...o,
         JSON.parse(payload).activeSubscriptions,
       ]);
-      setConnected((o) => [...o, JSON.parse(payload).connected]);
-      setDisconnected((o) => [...o, JSON.parse(payload).disconnected]);
       setPacketReceived((o) => [...o, JSON.parse(payload).packetReceived]);
       setPacketSent((o) => [...o, JSON.parse(payload).packetSent]);
+      setBytesReceived((o) => [...o, JSON.parse(payload).messageBytesReceived]);
+      setBytesSent((o) => [...o, JSON.parse(payload).messageBytesSent]);
       setData(JSON.parse(payload));
     });
   }, []);

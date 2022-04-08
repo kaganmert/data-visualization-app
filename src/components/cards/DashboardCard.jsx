@@ -23,7 +23,7 @@ function DashboardCard({ date, activeSubscriptions }) {
   };
 
   return (
-    <div className="flex flex-col bg-white border rounded-sm shadow-lg col-span-full sm:col-span-6 border-slate-200">
+    <div className="flex flex-col bg-white border rounded-sm shadow-lg col-span-full sm:col-span-4 border-slate-200">
       <header className="flex items-center px-5 py-4 border-b border-slate-100">
         <h2 className="font-semibold text-slate-800">Active Subscriptions</h2>
       </header>

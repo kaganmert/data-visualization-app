@@ -9,18 +9,17 @@ import "./css/style.scss";
 function App() {
   const [date, setDate] = useState([]);
   const [activeSubscriptions, setActiveSubscriptions] = useState([]);
-  const [connected, setConnected] = useState([]);
-  const [disconnected, setDisconnected] = useState([]);
   const [packetReceived, setPacketReceived] = useState([]);
   const [packetSent, setPacketSent] = useState([]);
-
+  const [bytesReceived, setBytesReceived] = useState([]);
+  const [bytesSent, setBytesSent] = useState([]);
   const { data } = useFetch(
     setDate,
     setActiveSubscriptions,
-    setConnected,
-    setDisconnected,
     setPacketReceived,
-    setPacketSent
+    setPacketSent,
+    setBytesReceived,
+    setBytesSent
   );
   if (!data) {
     return <DataNotFound />;
@@ -36,9 +35,16 @@ function App() {
                   activeSubscriptions={activeSubscriptions}
                 />
                 <MultipleResultCard
+                  title="Messages"
                   date={date}
-                  packetReceived={packetReceived}
-                  packetSent={packetSent}
+                  received={packetReceived}
+                  sent={packetSent}
+                />
+                <MultipleResultCard
+                  title="Bytes"
+                  date={date}
+                  received={bytesReceived}
+                  sent={bytesSent}
                 />
               </div>
             </div>
