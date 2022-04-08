@@ -6,7 +6,7 @@ import { tailwindConfig, hexToRGB } from "../../utils/Utils";
 function DashboardCard() {
   const [counter, setCounter] = useState(0);
   const [increment, setIncrement] = useState(0);
-  const [range, setRange] = useState(4);
+  const [range, setRange] = useState(2);
 
   const data = JSON.parse(localStorage.getItem("packetSent"));
 
