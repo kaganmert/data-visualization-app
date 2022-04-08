@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  digiterra:
+    build: .
+    container_name: digiterra
+    restart: unless-stopped
+    networks:
+      - digiterra
+    ports:
+      - 127.0.0.1:9002:3000
+
+networks:
+  digiterra:
