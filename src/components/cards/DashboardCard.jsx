@@ -1,56 +1,12 @@
-import React, { useState, useEffect } from "react";
-
 import RealtimeChart from "../charts/RealtimeChart";
 import { tailwindConfig, hexToRGB } from "../../utils/Utils";
 
-function DashboardCard() {
-  const [counter, setCounter] = useState(0);
-  const [increment, setIncrement] = useState(0);
-  const [range, setRange] = useState(2);
-
-  const data = JSON.parse(localStorage.getItem("activeSubscriptions"));
-
-  const [slicedData, setSlicedData] = useState(data.slice(0, range));
-
-  // Generate dates from local storage
-  const generateDates = () => {
-    return JSON.parse(localStorage.getItem("dates"));
-  };
-
-  const [slicedLabels, setSlicedLabels] = useState(
-    generateDates().slice(0, range).reverse()
-  );
-
-  // Update chart every 5 second
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCounter(counter + 1);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [counter]);
-
-  // Loop through local storage array and update
-  useEffect(() => {
-    setIncrement(increment + 1);
-    if (increment + range < data.length) {
-      setSlicedData(([x, ...slicedData]) => [
-        ...slicedData,
-        data[increment + range],
-      ]);
-    } else {
-      setIncrement(0);
-      setRange(0);
-    }
-    setSlicedLabels(([x, ...slicedLabels]) => [...slicedLabels, new Date()]);
-    return () => setIncrement(0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [counter]);
-
+function DashboardCard({ date, activeSubscriptions }) {
   const chartData = {
-    labels: slicedLabels,
+    labels: date,
     datasets: [
       {
-        data: slicedData,
+        data: activeSubscriptions,
         fill: true,
         backgroundColor: `rgba(${hexToRGB(
           tailwindConfig().theme.colors.blue[500]

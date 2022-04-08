@@ -25,7 +25,6 @@ Chart.register(
 );
 
 function LineChart({ data, width, height }) {
-  console.log(data);
   const canvas = useRef(null);
   const chartValue = useRef(null);
   const chartValue2 = useRef(null);
