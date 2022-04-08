@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="PerfAnalytics.API is a restful API which saves data, posted from PerfAnalytics.JS and returns time specific filtered data. "
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>Real Time Charts</title>
+  </head>
+  <body class="antialiased text-gray-600 bg-gray-100 font-inter">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script>
+      if (localStorage.getItem("sidebar-expanded") == "true") {
+        document.querySelector("body").classList.add("sidebar-expanded");
+      } else {
+        document.querySelector("body").classList.remove("sidebar-expanded");
+      }
+    </script>
+    <div id="root"></div>
+  </body>
+</html>
